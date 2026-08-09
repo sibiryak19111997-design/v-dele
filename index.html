@@ -1,0 +1,1325 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Клуб «В ДЕЛЕ» — концепция, программа и финансовая модель</title>
+</head>
+<body>
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #FBF8F9;
+    --surface: #FFFFFF;
+    --surface-alt: #F5EEF0;
+    --ink: #1E181B;
+    --muted: #6D6067;
+    --hairline: #E5D9DD;
+    --accent: #8A2D4D;
+    --accent-ink: #8A2D4D;
+    --accent-soft: #F3E0E6;
+    --sage: #3D6350;
+    --sage-soft: #E4ECE7;
+    --shadow: 0 1px 2px rgba(30,24,27,.05), 0 10px 28px -14px rgba(30,24,27,.16);
+    --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-body: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --measure: 36rem;
+    --wide: 64rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --ground: #171215;
+      --surface: #211A1E;
+      --surface-alt: #2B2226;
+      --ink: #F3EBEE;
+      --muted: #A2939A;
+      --hairline: #3A2E33;
+      --accent: #E58EA9;
+      --accent-ink: #E58EA9;
+      --accent-soft: #3B2129;
+      --sage: #8CBBA0;
+      --sage-soft: #22302A;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
+    }
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --ground: #FBF8F9;
+    --surface: #FFFFFF;
+    --surface-alt: #F5EEF0;
+    --ink: #1E181B;
+    --muted: #6D6067;
+    --hairline: #E5D9DD;
+    --accent: #8A2D4D;
+    --accent-ink: #8A2D4D;
+    --accent-soft: #F3E0E6;
+    --sage: #3D6350;
+    --sage-soft: #E4ECE7;
+    --shadow: 0 1px 2px rgba(30,24,27,.05), 0 10px 28px -14px rgba(30,24,27,.16);
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #171215;
+    --surface: #211A1E;
+    --surface-alt: #2B2226;
+    --ink: #F3EBEE;
+    --muted: #A2939A;
+    --hairline: #3A2E33;
+    --accent: #E58EA9;
+    --accent-ink: #E58EA9;
+    --accent-soft: #3B2129;
+    --sage: #8CBBA0;
+    --sage-soft: #22302A;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
+  }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    padding: 0 1.5rem 6rem;
+  }
+
+  .deck { max-width: var(--wide); margin: 0 auto; }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 4.5rem 0;
+    border-top: 1px solid var(--hairline);
+  }
+  section:first-of-type { border-top: 0; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.12;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 650;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+  }
+
+  p { max-width: var(--measure); }
+  .lead { font-size: 1.2rem; line-height: 1.55; }
+  .muted { color: var(--muted); }
+  .small { font-size: .9rem; line-height: 1.55; }
+  .print-only { display: none; }
+
+  /* ---------- обложка ---------- */
+  .cover { padding: 5.5rem 0 4.5rem; gap: 2rem; }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.4rem, 15vw, 8rem);
+    letter-spacing: -.05em;
+    line-height: .88;
+    margin: 0;
+    max-width: none;
+  }
+  .wordmark span { color: var(--accent-ink); }
+  .cover-center { display: flex; flex-direction: column; gap: 2rem; }
+  .cover-descriptor {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+    font-weight: 500;
+    letter-spacing: -.01em;
+    max-width: 28ch;
+    line-height: 1.35;
+  }
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 2rem;
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- оффер ---------- */
+  .offer {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-top: 3px solid var(--accent);
+    border-radius: 2px;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+  }
+  .offer-head {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.6vw, 1.95rem);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.16;
+    max-width: 24ch;
+  }
+  .offer-sub { font-size: 1.05rem; max-width: 46ch; }
+  .offer-price {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 650;
+    color: var(--accent-ink);
+  }
+
+  /* ---------- карточки ---------- */
+  .cards {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    box-shadow: var(--shadow);
+  }
+  .card p { max-width: none; }
+
+  /* ---------- айдентика ---------- */
+  .swatches {
+    display: grid;
+    gap: .75rem;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  }
+  .swatch { display: flex; flex-direction: column; gap: .4rem; }
+  .swatch-chip {
+    height: 3.5rem;
+    border-radius: 3px;
+    border: 1px solid var(--hairline);
+  }
+  .swatch-name { font-family: var(--font-display); font-size: .85rem; font-weight: 650; }
+  .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .type-spec {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .type-sample { display: flex; flex-direction: column; gap: .3rem; }
+  .type-sample .demo-display {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -.03em;
+  }
+  .type-sample .demo-body { font-family: var(--font-body); font-size: 1.15rem; }
+  .type-sample .demo-mono {
+    font-family: var(--font-mono);
+    font-size: .95rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- месяцы ---------- */
+  .month-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .5rem .9rem;
+  }
+  .month-tag {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    padding: .22rem .5rem;
+    border-radius: 2px;
+  }
+  .topics { display: flex; flex-direction: column; gap: 0; }
+  .topic {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0 1rem;
+    padding: .85rem 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+  .topic:first-child { border-top: 1px solid var(--hairline); }
+  .topic-num {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .topic-body { display: flex; flex-direction: column; gap: .2rem; }
+  .topic-body p { max-width: 48ch; }
+
+  .month-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: .7rem 1.5rem;
+    padding-top: .9rem;
+    border-top: 1px dashed var(--hairline);
+  }
+  .month-meta > div { display: flex; flex-direction: column; gap: .12rem; }
+  .month-meta dt {
+    font-family: var(--font-mono);
+    font-size: .62rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .month-meta dd { font-family: var(--font-display); font-size: .85rem; line-height: 1.35; }
+  .month-meta dd.money { color: var(--sage); font-weight: 650; font-variant-numeric: tabular-nums; }
+
+  /* ---------- тарифы ---------- */
+  .plans {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .plan {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 1.5rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+  .plan.is-featured { border-color: var(--accent); box-shadow: var(--shadow); }
+  .plan-term {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .plan-price {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .plan-per { font-size: .9rem; color: var(--muted); }
+  .plan-note { font-size: .88rem; color: var(--sage); font-family: var(--font-display); font-weight: 600; }
+
+  /* ---------- таблицы ---------- */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+  table { border-collapse: collapse; width: 100%; font-family: var(--font-display); font-size: .9rem; }
+  caption {
+    text-align: left;
+    padding: .9rem 1rem .1rem;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  th, td {
+    padding: .62rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--hairline);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  th:first-child, td:first-child { text-align: left; white-space: normal; min-width: 11rem; }
+  thead th {
+    font-size: .72rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  tr.is-total td { font-weight: 700; background: var(--surface-alt); border-top: 1px solid var(--hairline); }
+  td.pos { color: var(--sage); font-weight: 600; }
+  td.wrap { text-align: left; white-space: normal; }
+
+  /* ---------- выноски ---------- */
+  .callout {
+    background: var(--surface-alt);
+    border-left: 2px solid var(--accent);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout p { max-width: 52ch; }
+  .callout-title { font-family: var(--font-display); font-weight: 700; font-size: .95rem; }
+
+  .figures {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  }
+  .figure { display: flex; flex-direction: column; gap: .2rem; padding: 1.1rem 0 0; border-top: 2px solid var(--accent); }
+  .figure-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 5vw, 2.3rem);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .figure-label { font-size: .85rem; color: var(--muted); line-height: 1.4; }
+
+  ul.list { list-style: none; display: flex; flex-direction: column; gap: .55rem; max-width: var(--measure); }
+  ul.list li { padding-left: 1.1rem; position: relative; }
+  ul.list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .68em;
+    width: .4rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .split {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    align-items: start;
+  }
+  .split > div { display: flex; flex-direction: column; gap: .7rem; }
+  .split p, .split ul.list { max-width: none; }
+
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0 1.25rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+  .step:first-child { border-top: 1px solid var(--hairline); }
+  .step-when {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+  .step-body { display: flex; flex-direction: column; gap: .25rem; }
+  .step-body p { max-width: 48ch; }
+
+  .names { display: flex; flex-direction: column; gap: 0; }
+  .name-row {
+    display: grid;
+    grid-template-columns: minmax(8rem, 12rem) 1fr;
+    gap: .35rem 1.25rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+  .name-row:first-child { border-top: 1px solid var(--hairline); }
+  .name-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; }
+  .name-row.is-pick .name-title { color: var(--accent-ink); }
+  .name-row p { max-width: 46ch; }
+
+  footer {
+    padding: 3rem 0 0;
+    border-top: 1px solid var(--hairline);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  @media (max-width: 34rem) {
+    .topic { grid-template-columns: 1fr; gap: .3rem; }
+    .step { grid-template-columns: 1fr; gap: .3rem; }
+    .name-row { grid-template-columns: 1fr; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- печать и PDF ---------- */
+  @page { size: A4; margin: 14mm 15mm; }
+
+  @media print {
+    :root, :root[data-theme="dark"] {
+      --ground: #FFFFFF;
+      --surface: #FFFFFF;
+      --surface-alt: #F5EEF0;
+      --ink: #1E181B;
+      --muted: #5F545A;
+      --hairline: #DCCED3;
+      --accent: #8A2D4D;
+      --accent-ink: #8A2D4D;
+      --accent-soft: #F3E0E6;
+      --sage: #335744;
+      --sage-soft: #E4ECE7;
+      --shadow: none;
+    }
+
+    html, body {
+      background: #FFFFFF;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body { padding: 0; font-size: 11pt; }
+    .deck { max-width: none; counter-reset: sec; }
+
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .print-only { display: flex; }
+
+    section { break-before: page; padding: 0 0 1rem; border-top: 0; gap: 1.15rem; }
+
+    section:not(.cover):not(.print-only) > .eyebrow::before {
+      counter-increment: sec;
+      content: counter(sec, decimal-leading-zero) " · ";
+      font-weight: 700;
+    }
+
+    section.cover {
+      break-before: auto;
+      min-height: 248mm;
+      justify-content: space-between;
+      padding: 0;
+      gap: 0;
+    }
+    .cover-center {
+      gap: 1.6rem;
+      padding: 2rem 0;
+      border-top: 3px solid var(--accent);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .cover-meta { gap: .35rem 2.5rem; }
+
+    h2 { font-size: 20pt; }
+    .lead { font-size: 12.5pt; }
+    .wordmark { font-size: 76pt; }
+    .cover-descriptor { font-size: 15pt; max-width: 24ch; }
+    .offer-head { font-size: 19pt; }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(10, auto);
+      grid-auto-flow: column;
+      gap: .1rem 2.5rem;
+      margin-top: .5rem;
+    }
+    .toc-list li {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: .75rem;
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--hairline);
+      font-family: var(--font-display);
+      font-size: 10pt;
+      break-inside: avoid;
+    }
+    .toc-list li span:first-child {
+      font-family: var(--font-mono);
+      font-size: 8.5pt;
+      color: var(--accent-ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .closing { justify-content: center; min-height: 200mm; }
+    .closing h2 { font-size: 26pt; max-width: 18ch; }
+
+    .card, .plan, .figure, .callout, .table-wrap, .offer { break-inside: avoid; }
+    .topic, .step, .name-row, .swatch { break-inside: avoid; }
+    table { font-size: 9.5pt; }
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; }
+    .table-wrap { overflow-x: visible; }
+
+    footer { break-before: avoid; padding-top: 1.5rem; }
+  }
+</style>
+
+<div class="deck">
+
+  <section class="cover">
+    <p class="eyebrow">Концепция клуба · Август 2026</p>
+    <div class="cover-center">
+      <h1 class="wordmark">В<span>·</span>ДЕЛЕ</h1>
+      <p class="cover-descriptor">Клуб онлайн-заработка. Каждый месяц — новая профессия, на которой можно начать зарабатывать.</p>
+    </div>
+    <div class="cover-meta">
+      <span>Виктория Касимова</span>
+      <span>1,7 млн подписчиков</span>
+      <span>Подписка от 1 490 ₽</span>
+    </div>
+  </section>
+
+  <section class="print-only">
+    <p class="eyebrow">Содержание</p>
+    <h2>О чём этот документ</h2>
+    <ol class="toc-list">
+      <li><span>01</span><span>Что это</span></li>
+      <li><span>02</span><span>Оффер</span></li>
+      <li><span>03</span><span>Миссия и идея</span></li>
+      <li><span>04</span><span>Айдентика клуба</span></li>
+      <li><span>05</span><span>Аудитория</span></li>
+      <li><span>06</span><span>Как устроен месяц</span></li>
+      <li><span>07</span><span>Месяц 1: нейросети</span></li>
+      <li><span>08</span><span>Месяц 2: дизайн</span></li>
+      <li><span>09</span><span>Месяц 3: рилс и видео</span></li>
+      <li><span>10</span><span>Месяц 4 и дальше</span></li>
+      <li><span>11</span><span>Тарифы</span></li>
+      <li><span>12</span><span>Финансовый план: запуск</span></li>
+      <li><span>13</span><span>Финансовый план: полгода</span></li>
+      <li><span>14</span><span>Финансовый план: расходы</span></li>
+      <li><span>15</span><span>Финансовый план: сценарии</span></li>
+      <li><span>16</span><span>Роли: блогер и команда</span></li>
+      <li><span>17</span><span>План запуска</span></li>
+      <li><span>18</span><span>Риски</span></li>
+      <li><span>19</span><span>Варианты названия</span></li>
+    </ol>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Что это</p>
+    <h2>Клуб, где каждый месяц осваивают новую профессию</h2>
+    <p class="lead">«В ДЕЛЕ» — закрытый клуб по подписке в Telegram. Каждый месяц берётся одно направление заработка в интернете: записанные уроки, два прямых эфира с Викторией, отдельный чат направления и куратор, который отвечает на вопросы.</p>
+    <p>Прошёл месяц — освоила навык и попробовала на нём заработать. Не пошло — со следующего месяца начинается другое направление, и человек остаётся. Пошло — углубляется и берёт заказы. Не нужно заранее угадывать, «моё или не моё»: клуб даёт попробовать несколько профессий подряд, а не одну.</p>
+    <div class="callout">
+      <p class="callout-title">Почему клуб, а не курс</p>
+      <p>Курс продаётся один раз и заканчивается вместе с деньгами. Клуб с новым направлением каждый месяц даёт причину продлевать подписку и на третий, и на шестой месяц — программа не исчерпывается, а темы вроде нейросетей обновляются быстрее, чем успевают устареть.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Оффер</p>
+    <h2>Что видит человек</h2>
+    <div class="offer">
+      <p class="offer-head">Освой профессию за месяц и начни зарабатывать из дома</p>
+      <p class="offer-sub">Нейросети, дизайн, рилсы — по одному направлению в месяц. С нуля, с телефона, без опыта и вложений. Уроки, живые эфиры с Викой, чат и куратор рядом.</p>
+      <p class="offer-price">От 1 490 ₽ в месяц. Отменить можно в любой момент.</p>
+    </div>
+    <div class="split">
+      <div>
+        <h3>Что получает участница</h3>
+        <ul class="list">
+          <li>Уроки, которые можно смотреть ночью, когда дети спят</li>
+          <li>Два эфира с Викторией: разбор работ и ответы</li>
+          <li>Чат направления и куратор на связи</li>
+          <li>Готовые тексты для отклика заказчикам и прайс</li>
+          <li>Работы в портфолио уже в первый месяц</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Чего в клубе нет</h3>
+        <ul class="list">
+          <li>Обещаний конкретного дохода — учим навыку, а не гарантируем суммы</li>
+          <li>Долгих теоретических лекций</li>
+          <li>Требований к технике: хватит телефона</li>
+          <li>Обязательств: подписка отменяется в один клик</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Миссия и идея</p>
+    <h2>Чтобы не выбирать между семьёй и своими деньгами</h2>
+    <div class="split">
+      <div>
+        <h3>Миссия</h3>
+        <p class="small muted">Дать женщине, у которой есть дом, дети и очень мало свободного времени, реальный способ зарабатывать самой. Не «когда-нибудь потом», а в ближайший месяц — на навыке, который осваивается с телефона.</p>
+        <p class="small muted">Виктория выросла в Воткинске и собрала полтора миллиона подписчиков на двух площадках, не переезжая в Москву. Клуб — продолжение этой же истории: география и стартовые условия не решают.</p>
+      </div>
+      <div>
+        <h3>Идея</h3>
+        <p class="small muted">Главная причина, по которой люди не начинают зарабатывать онлайн, — не отсутствие знаний, а невозможность выбрать. Слишком много направлений, каждое требует денег и месяцев, ошибиться страшно.</p>
+        <p class="small muted">Клуб снимает этот выбор: пробуешь по одному направлению в месяц за цену двух пицц. Через полгода человек знает не по статьям, а на своём опыте, что ему подходит — и уже имеет работы в портфолио.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-title">Обещание, которое можно выполнить</p>
+      <p>Клуб обещает навык, поддержку и понимание, где брать заказы. Он не обещает доход в цифрах — ни в рекламе, ни в оферте. Это не осторожность ради осторожности: обещанный и неполученный доход возвращается возвратами, скандалом в комментариях и претензиями, а репутация блогера дороже любого набора.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Айдентика</p>
+    <h2>Как клуб выглядит и разговаривает</h2>
+    <p>Визуально клуб держится подальше от двух крайностей: «женских курсов» с пыльной розой и завитками и «инфобизнеса» с золотом на чёрном. Первое несерьёзно, второе вызывает недоверие именно у этой аудитории.</p>
+
+    <h3>Знак</h3>
+    <p class="small muted">Наборный логотип: «В·ДЕЛЕ» плотным гротеском, разделительная точка — единственный цветной элемент. Читается и как «я в деле», и как «в деле» — в работе. Легко ставится на обложку рилса, аватарку канала и обложку урока.</p>
+
+    <h3>Палитра</h3>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#8A2D4D"></div>
+        <span class="swatch-name">Сливовый</span>
+        <span class="swatch-hex">#8A2D4D · акцент</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#1E181B"></div>
+        <span class="swatch-name">Графит</span>
+        <span class="swatch-hex">#1E181B · текст</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#3D6350"></div>
+        <span class="swatch-name">Зелёный</span>
+        <span class="swatch-hex">#3D6350 · деньги, результат</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#F5EEF0"></div>
+        <span class="swatch-name">Розовый фон</span>
+        <span class="swatch-hex">#F5EEF0 · плашки</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#FBF8F9"></div>
+        <span class="swatch-name">Основа</span>
+        <span class="swatch-hex">#FBF8F9 · фон</span>
+      </div>
+    </div>
+    <p class="small muted">Сливовый — тёплый и взрослый, работает и на светлом, и на тёмном. Зелёный отвечает только за деньги и результат: суммы, отметки о выполненном. Больше цветов не вводим — иначе оформление уроков поплывёт у первого же дизайнера.</p>
+
+    <h3>Шрифты</h3>
+    <div class="type-spec">
+      <div class="type-sample">
+        <span class="demo-display">Деньги на нейросетях</span>
+        <span class="swatch-hex">Гротеск · заголовки, цифры, кнопки</span>
+      </div>
+      <div class="type-sample">
+        <span class="demo-body">Уроки, которые можно смотреть ночью</span>
+        <span class="swatch-hex">Антиква · тексты и описания</span>
+      </div>
+      <div class="type-sample">
+        <span class="demo-mono">Месяц 1 · 1 490 ₽</span>
+        <span class="swatch-hex">Моноширинный · метки и служебное</span>
+      </div>
+    </div>
+
+    <h3>Тон разговора</h3>
+    <div class="split">
+      <div>
+        <h3>Как говорим</h3>
+        <ul class="list">
+          <li>На «ты», спокойно, как подруга, которая уже разобралась</li>
+          <li>Конкретно: «сделай карусель из пяти слайдов», а не «прокачай насмотренность»</li>
+          <li>Признаём, что страшно и непонятно — это нормальное состояние на старте</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Как не говорим</h3>
+        <ul class="list">
+          <li>Без «успешного успеха», «мышления миллионера» и мотивационных лозунгов</li>
+          <li>Без англицизмов: не «онбординг», а «первые шаги»</li>
+          <li>Без сумм дохода в заголовках</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Аудитория</p>
+    <h2>Женщины 30+, регионы, дом и семья</h2>
+    <div class="split">
+      <div>
+        <h3>Что у них в голове</h3>
+        <ul class="list">
+          <li>«Хочу свои деньги, чтобы не просить»</li>
+          <li>«Работа из дома, чтобы не бросать детей»</li>
+          <li>«Учиться заново страшно, я не разбираюсь в технике»</li>
+          <li>«Курсы за 50 тысяч не потяну и не поверю»</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Что отвечает клуб</h3>
+        <ul class="list">
+          <li>Цена как две пиццы, а не как зарплата</li>
+          <li>Всё с телефона, без специального оборудования</li>
+          <li>Куратор отвечает на глупые вопросы без осуждения</li>
+          <li>Ведёт та, кому уже доверяют, — не безымянная школа</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small muted">Портрет построен на типе контента и географии блога. До запуска нужна выгрузка статистики Instagram и TikTok: пол, возраст, города, охваты за 30 дней.</p>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Механика</p>
+    <h2>Как устроен один месяц</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Записанные уроки</h3>
+        <p class="small">4–6 коротких занятий с заданием после каждого. Смотреть можно в любое время.</p>
+      </div>
+      <div class="card">
+        <h3>Два эфира с Викторией</h3>
+        <p class="small">Открывающий задаёт цель месяца, закрывающий — разбор работ и ответы на вопросы.</p>
+      </div>
+      <div class="card">
+        <h3>Чат направления</h3>
+        <p class="small">Отдельный чат на месяц. Все в одной точке программы, поэтому вопросы у всех похожие.</p>
+      </div>
+      <div class="card">
+        <h3>Куратор на связи</h3>
+        <p class="small">Дежурный куратор в чате: разбирает вопросы, показывает на примерах, не даёт бросить на второй неделе.</p>
+      </div>
+      <div class="card">
+        <h3>Где брать заказы</h3>
+        <p class="small">В каждом направлении — готовые тексты для отклика, площадки и прайс. Без этого навык не превращается в деньги.</p>
+      </div>
+      <div class="card">
+        <h3>Результат месяца</h3>
+        <p class="small">Не «прошла курс», а конкретные работы в портфолио и первые отклики заказчикам.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Программа · Месяц 1</p>
+    <div class="month-head">
+      <h2>Деньги на нейросетях</h2>
+      <span class="month-tag">Старт клуба</span>
+    </div>
+    <p>Самый низкий порог входа из всех направлений: первый результат получается в день первого урока. Именно поэтому нейросети стоят первыми — человек должен увидеть, что у него получается, до второго списания.</p>
+    <div class="topics">
+      <div class="topic">
+        <div class="topic-num">1.1</div>
+        <div class="topic-body">
+          <h3>Основы работы с нейросетями</h3>
+          <p class="small muted">Учимся ставить задачу и получать нужный результат — на примере Claude как основного рабочего инструмента. Как формулировать запрос, как исправлять ответ, как не получить «воду».</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">1.2</div>
+        <div class="topic-body">
+          <h3>Фото-контент без фотосессии</h3>
+          <p class="small muted">Портреты, предметные снимки, фото товара на модели. То, за что раньше платили фотографу и студии.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">1.3</div>
+        <div class="topic-body">
+          <h3>Создание изображений</h3>
+          <p class="small muted">Картинки под конкретную задачу: обложка, рекламный креатив, иллюстрация к посту, фон для баннера.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">1.4</div>
+        <div class="topic-body">
+          <h3>Создание текстов</h3>
+          <p class="small muted">Описания товаров, посты, рассылки, сценарии роликов. Как править за нейросетью, чтобы текст не звучал machine-made.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">1.5</div>
+        <div class="topic-body">
+          <h3>Карусели</h3>
+          <p class="small muted">Многослайдовые посты под ключ: структура, тексты, картинки. Самый ходовой формат у экспертов и локального бизнеса.</p>
+        </div>
+      </div>
+    </div>
+    <dl class="month-meta">
+      <div><dt>Кто платит</dt><dd>Продавцы на маркетплейсах, кафе и салоны в своём городе, эксперты, блогеры</dd></div>
+      <div><dt>Чек</dt><dd class="money">500–3 000 ₽ за работу, 5–15 тыс. ₽ за комплект</dd></div>
+      <div><dt>Первые деньги</dt><dd>Собрать 5 работ и предложить трём знакомым предпринимателям</dd></div>
+    </dl>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Программа · Месяц 2</p>
+    <h2>Деньги на дизайне</h2>
+    <p>Продолжение первого месяца: те же нейросети становятся инструментом внутри понятной услуги. Заказчик покупает не «картинку», а готовый баннер, сайт или презентацию — и платит за это заметно больше.</p>
+    <div class="topics">
+      <div class="topic">
+        <div class="topic-num">2.1</div>
+        <div class="topic-body">
+          <h3>Баннеры и промо-посты</h3>
+          <p class="small muted">Оформление акций и объявлений: что писать на баннере, как расставить главное, где брать шаблоны и как их менять под заказчика.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">2.2</div>
+        <div class="topic-body">
+          <h3>Создание сайтов</h3>
+          <p class="small muted">Простые страницы на конструкторах и с помощью нейросети: визитка мастера, страница услуги, страница записи. Без программирования.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">2.3</div>
+        <div class="topic-body">
+          <h3>Оформление презентаций</h3>
+          <p class="small muted">Презентации для экспертов, коммерческие предложения, продающие подборки. Тихая ниша с постоянным спросом и почти без конкуренции в регионах.</p>
+        </div>
+      </div>
+    </div>
+    <dl class="month-meta">
+      <div><dt>Кто платит</dt><dd>Локальный бизнес, частные мастера, эксперты, небольшие компании</dd></div>
+      <div><dt>Чек</dt><dd class="money">1,5–5 тыс. ₽ за баннер, 8–30 тыс. ₽ за сайт или презентацию</dd></div>
+      <div><dt>Первые деньги</dt><dd>Сделать сайт-визитку знакомому мастеру и получить рекомендацию</dd></div>
+    </dl>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Программа · Месяц 3</p>
+    <h2>Деньги на рилс и коротких роликах</h2>
+    <p>Месяц, где Виктория сильнее любого приглашённого эксперта: полтора миллиона подписчиков собраны именно короткими роликами. Здесь её эфиры становятся главной ценностью месяца, а не дополнением к урокам.</p>
+    <div class="topics">
+      <div class="topic">
+        <div class="topic-num">3.1</div>
+        <div class="topic-body">
+          <h3>Съёмка на телефон</h3>
+          <p class="small muted">Свет, кадр, звук, что делать с дрожащими руками. Как снять нормально в обычной квартире и в помещении заказчика.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">3.2</div>
+        <div class="topic-body">
+          <h3>Монтаж рилсов</h3>
+          <p class="small muted">Сборка ролика в бесплатном приложении: склейки, субтитры, музыка, обложка. От сырого материала до готового к публикации видео.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">3.3</div>
+        <div class="topic-body">
+          <h3>Сценарий и первые секунды</h3>
+          <p class="small muted">Почему ролик не смотрят дальше третьей секунды и что с этим делать. Разбор на реальных роликах участниц.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <div class="topic-num">3.4</div>
+        <div class="topic-body">
+          <h3>Съёмка на заказ</h3>
+          <p class="small muted">Как договориться с местным бизнесом, сколько брать, что входит в пакет на месяц.</p>
+        </div>
+      </div>
+    </div>
+    <dl class="month-meta">
+      <div><dt>Кто платит</dt><dd>Локальный бизнес, блогеры, эксперты, продавцы на маркетплейсах</dd></div>
+      <div><dt>Чек</dt><dd class="money">2–8 тыс. ₽ за ролик, 15–30 тыс. ₽ за пакет на месяц</dd></div>
+      <div><dt>Первые деньги</dt><dd>Снять один ролик бесплатно для местного кафе и выйти на платный формат</dd></div>
+    </dl>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Программа · Дальше</p>
+    <h2>Месяц 4 и следующие</h2>
+    <p>Четвёртое направление сознательно не фиксируем сейчас. Первый поток покажет, куда людей тянет на самом деле, а рынок за три месяца успеет измениться. Кандидаты отобраны по одному признаку — есть заказчик, готовый платить сегодня.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Соцсети под ключ</h3>
+        <p class="small">Ведение аккаунта бизнеса целиком — первые три навыка собираются в одну услугу с ежемесячной оплатой. 15–35 тыс. ₽ в месяц с клиента. <strong>Главный кандидат:</strong> переводит участницу с разовых заказов на постоянный доход.</p>
+      </div>
+      <div class="card">
+        <h3>Карточки для маркетплейсов</h3>
+        <p class="small">Обложки, инфографика, описания для продавцов Wildberries и Ozon. Сотни тысяч селлеров, товар обновляется постоянно. 1,5–5 тыс. ₽ за карточку.</p>
+      </div>
+      <div class="card">
+        <h3>Онлайн-помощник</h3>
+        <p class="small">Не фриланс, а удалённая занятость у эксперта или компании: переписка, расписание, документы. 25–60 тыс. ₽ в месяц за 3–5 часов в день.</p>
+      </div>
+      <div class="card">
+        <h3>Свой блог и реклама</h3>
+        <p class="small">Месяц, который ведёт лично Виктория: первая тысяча подписчиков, первая платная интеграция, работа с рекламодателями.</p>
+      </div>
+      <div class="card">
+        <h3>Чат-боты и автоворонки</h3>
+        <p class="small">Сборка на конструкторах без программирования. 15–50 тыс. ₽ за бота плюс поддержка ежемесячно.</p>
+      </div>
+      <div class="card">
+        <h3>Дело, а не подработка</h3>
+        <p class="small">Финальный месяц года: самозанятость, договоры, поднятие цен, первый помощник. Превращение заработка в устойчивый доход.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-title">Логика программы</p>
+      <p>Месяцы 1–3 идут от простого к дорогому на одних и тех же заказчиках: сначала картинка, потом дизайн, потом видео. Человек не бросает найденных клиентов, а поднимает им чек. Четвёртый месяц по плану должен переводить на абонентскую плату — это разница между «иногда подрабатываю» и «у меня есть доход».</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Тарифы</p>
+    <h2>Чем дольше срок, тем дешевле месяц</h2>
+    <div class="plans">
+      <div class="plan">
+        <span class="plan-term">1 месяц</span>
+        <span class="plan-price">1 490 ₽</span>
+        <span class="plan-per">1 490 ₽ в месяц</span>
+        <p class="small muted">Автопродление. Отмена в один клик в боте.</p>
+      </div>
+      <div class="plan is-featured">
+        <span class="plan-term">3 месяца</span>
+        <span class="plan-price">3 490 ₽</span>
+        <span class="plan-per">1 163 ₽ в месяц</span>
+        <span class="plan-note">Выгода 980 ₽ · 22%</span>
+        <p class="small muted">Нейросети, дизайн и рилсы — вся стартовая программа.</p>
+      </div>
+      <div class="plan">
+        <span class="plan-term">6 месяцев</span>
+        <span class="plan-price">5 490 ₽</span>
+        <span class="plan-per">915 ₽ в месяц</span>
+        <span class="plan-note">Выгода 3 450 ₽ · 39%</span>
+        <p class="small muted">Полгода программы плюс доступ к архиву направлений.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-title">На что смотреть после первого набора</p>
+      <p>Трёхмесячный тариф — основной: он закрывает ровно стартовую программу из трёх направлений, это легко объяснить одной строкой. Полугодовой со скидкой 39% собирает много денег сразу, но если его возьмёт больше четверти покупателей, средний чек заметно просядет — за долей длинного тарифа в первом наборе нужно следить и при перекосе поднимать его до 5 990 ₽.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Финансовый план · Запуск</p>
+    <h2>Сколько приносит первый набор</h2>
+    <p>Расчёт для базового сценария — <strong>5 000 покупок</strong> на старте. Распределение по тарифам взято типовое для клубов: 55% берут месяц, 30% — три месяца, 15% — полгода.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Поступления в момент запуска, ₽</caption>
+        <thead>
+          <tr>
+            <th>Тариф</th>
+            <th>Цена</th>
+            <th>Покупок</th>
+            <th>Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 месяц</td><td>1 490</td><td>2 750</td><td>4 097 500</td></tr>
+          <tr><td>3 месяца</td><td>3 490</td><td>1 500</td><td>5 235 000</td></tr>
+          <tr><td>6 месяцев</td><td>5 490</td><td>750</td><td>4 117 500</td></tr>
+          <tr class="is-total"><td>Итого на старте</td><td>—</td><td>5 000</td><td>13 450 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="figures">
+      <div class="figure">
+        <span class="figure-value">13,5 млн</span>
+        <span class="figure-label">поступлений в первый месяц</span>
+      </div>
+      <div class="figure">
+        <span class="figure-value">2 690 ₽</span>
+        <span class="figure-label">средний чек покупки</span>
+      </div>
+      <div class="figure">
+        <span class="figure-value">5 000</span>
+        <span class="figure-label">участников на старте</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Финансовый план · Полгода</p>
+    <h2>Что происходит после первого месяца</h2>
+    <p>Главное в подписке — не первый набор, а сколько людей останется. Модель считает по когортам: месячный тариф продлевают 55% каждый месяц, трёхмесячный по окончании продлевают 45%.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Движение участников и поступлений, ₽</caption>
+        <thead>
+          <tr>
+            <th>Период</th>
+            <th>Активных</th>
+            <th>Поступления</th>
+            <th>Что происходит</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Месяц 1</td><td>5 000</td><td>13 450 000</td><td class="wrap">Первый набор</td></tr>
+          <tr><td>Месяц 2</td><td>3 763</td><td>2 254 000</td><td class="wrap">Продления месячных</td></tr>
+          <tr><td>Месяц 3</td><td>3 082</td><td>1 240 000</td><td class="wrap">Продления месячных</td></tr>
+          <tr><td>Месяц 4</td><td>1 883</td><td>3 038 000</td><td class="wrap">Истекают трёхмесячные, 45% продлевают</td></tr>
+          <tr><td>Месяц 5</td><td>1 677</td><td>375 000</td><td class="wrap">Продления месячных</td></tr>
+          <tr><td>Месяц 6</td><td>1 564</td><td>207 000</td><td class="wrap">Продления месячных</td></tr>
+          <tr class="is-total"><td>За полгода</td><td>—</td><td>20 564 000</td><td class="wrap">До вычета расходов</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Провал в пятом и шестом месяце — не ошибка модели, а свойство запуска одной волной. Лечится вторым набором на третьем месяце: он накладывается на первую когорту и выравнивает поток.</p>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Финансовый план · Расходы</p>
+    <h2>Себестоимость продукта — 5% от поступлений</h2>
+    <p>Клуб строится как массовый: записанные уроки одинаковы для всех, поддержка идёт в общих чатах направления, персональной проверки работ нет. Это и держит себестоимость на уровне 5% вместо обычных для онлайн-школ 25–40%.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Расходы за полгода, ₽</caption>
+        <thead>
+          <tr>
+            <th>Статья</th>
+            <th>Доля</th>
+            <th>За полгода</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Продукт: уроки, эксперты, чаты, поддержка, бот</td><td>5,0%</td><td>1 028 000</td></tr>
+          <tr><td>Эквайринг</td><td>3,5%</td><td>720 000</td></tr>
+          <tr><td>Возвраты, резерв</td><td>3,0%</td><td>617 000</td></tr>
+          <tr><td>Налог УСН</td><td>6,0%</td><td>1 234 000</td></tr>
+          <tr class="is-total"><td>Итого расходов</td><td>17,5%</td><td>3 599 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="figures">
+      <div class="figure">
+        <span class="figure-value">20,6 млн</span>
+        <span class="figure-label">поступлений за полгода</span>
+      </div>
+      <div class="figure">
+        <span class="figure-value">3,6 млн</span>
+        <span class="figure-label">расходов за полгода</span>
+      </div>
+      <div class="figure">
+        <span class="figure-value">17,0 млн</span>
+        <span class="figure-label">прибыль до распределения между партнёрами</span>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-title">Что означает 5% на практике</p>
+      <p>Это около 170 тысяч ₽ в месяц на продукт при пяти тысячах участников — примерно один дежурный в чате на 700 человек. Формат рабочий, но упаковка должна обещать ровно его: <strong>ответы в чате направления</strong>, а не «куратор ведёт за руку» и не «проверка домашних заданий».</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Финансовый план · Сценарии</p>
+    <h2>Если продаж будет меньше или больше</h2>
+    <div class="table-wrap">
+      <table>
+        <caption>Полгода при разном объёме первого набора, ₽</caption>
+        <thead>
+          <tr>
+            <th>Сценарий</th>
+            <th>Покупок</th>
+            <th>Поступления</th>
+            <th>Расходы</th>
+            <th>Прибыль</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Осторожный</td><td>3 000</td><td>12 338 000</td><td>2 159 000</td><td class="pos">10 179 000</td></tr>
+          <tr><td>Базовый</td><td>5 000</td><td>20 564 000</td><td>3 599 000</td><td class="pos">16 965 000</td></tr>
+          <tr><td>Оптимистичный</td><td>7 000</td><td>28 790 000</td><td>5 038 000</td><td class="pos">23 752 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Расходы почти целиком переменные — 17,5% от поступлений в любом сценарии. Модель не разваливается и на малом наборе, но и не даёт выигрыша от масштаба: прибыль растёт ровно вместе с выручкой.</p>
+    <div class="callout">
+      <p class="callout-title">Про налоги — обязательно к бухгалтеру</p>
+      <p>Расчёт сделан по УСН 6% и без НДС. При годовом обороте свыше 60 млн ₽ НДС появляется даже на упрощёнке — по льготной ставке 5%. На этих объёмах порог будет пройден в первый же год, и это минус ещё около миллиона за полугодие.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Роли</p>
+    <h2>Что делает Виктория, а что — команда</h2>
+    <div class="split">
+      <div>
+        <h3>Виктория</h3>
+        <ul class="list">
+          <li>Два эфира в месяц — примерно два с половиной часа</li>
+          <li>Прогрев в блоге: серия роликов перед набором</li>
+          <li>Лицо клуба: приветствие, поздравления с первыми заказами</li>
+          <li>Третий месяц ведёт сама — рилсы это её territory</li>
+        </ul>
+        <p class="small muted">Уроки по нейросетям и дизайну записывает не она. По каждому направлению приглашается практик — Виктория ведёт клуб, а не преподаёт все профессии подряд. Это снимает главный риск: ей не нужно быть экспертом в шести областях.</p>
+      </div>
+      <div>
+        <h3>Команда</h3>
+        <ul class="list">
+          <li>Продюсер: программа, эксперты, запуски</li>
+          <li>Руководитель программы и кураторы</li>
+          <li>Модераторы чатов и техподдержка</li>
+          <li>Продакшн: съёмка, монтаж, оформление</li>
+          <li>Бот, приём оплаты, доступы</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Запуск</p>
+    <h2>Шесть недель до старта</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-when">Недели 1–2</div>
+        <div class="step-body">
+          <h3>Решения и бумаги</h3>
+          <p class="small muted">Название, тарифы, оферта, юридический статус, договор с эквайрингом. Без этого нельзя принимать деньги.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-when">Недели 2–4</div>
+        <div class="step-body">
+          <h3>Телеграм-канал с нуля</h3>
+          <p class="small muted">У Виктории 872 тысячи в Instagram и около 800 тысяч в TikTok, а Telegram-канала нет вообще. Канал нужно завести и прогреть бесплатным контентом до открытия продаж.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-when">Недели 3–5</div>
+        <div class="step-body">
+          <h3>Производство первого месяца</h3>
+          <p class="small muted">Эксперт по нейросетям, запись уроков, набор и обучение кураторов, бот с оплатой и выдачей доступа.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-when">Недели 5–6</div>
+        <div class="step-body">
+          <h3>Продажи и старт</h3>
+          <p class="small muted">Набор идёт ограниченное окно — несколько дней. Постоянно открытая дверь не создаёт причины решать сегодня.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Риски</p>
+    <h2>Что решить до того, как соберём деньги</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Доступ к нейросетям из России</h3>
+        <p class="small">Claude и большинство зарубежных сервисов требуют оплаты иностранной картой, часть не открывается напрямую. В программу берём только то, чем женщина из Воткинска сможет пользоваться с телефона и оплатить российской картой — иначе первый же месяц встанет. Проверить до записи уроков.</p>
+      </div>
+      <div class="card">
+        <h3>Пустой Telegram</h3>
+        <p class="small">Аудитория живёт в Instagram и TikTok. На перегон в Telegram нужно закладывать месяц и отдельный контент-план — это самое узкое место всего запуска.</p>
+      </div>
+      <div class="card">
+        <h3>Чат на пять тысяч человек</h3>
+        <p class="small">Общий чат такого размера превращается в свалку за сутки. Нужны потоки по 300–500 человек, правила, закреплённые ответы на частые вопросы и жёсткая модерация.</p>
+      </div>
+      <div class="card">
+        <h3>Никаких обещаний дохода</h3>
+        <p class="small">Ни в рекламе, ни в боте, ни в оферте не может быть «заработаете от 50 тысяч». Только то, чему учим. За обещанный и неполученный доход отвечают деньгами.</p>
+      </div>
+      <div class="card">
+        <h3>Юридический статус</h3>
+        <p class="small">На таких оборотах принимать деньги можно только через ИП или ООО: нужен эквайринг с автосписаниями, чеки по 54-ФЗ и оферта с условиями отмены.</p>
+      </div>
+      <div class="card">
+        <h3>Второй набор заранее</h3>
+        <p class="small">Одна волна выдыхается к пятому месяцу. Второй набор планируется сразу, а не тогда, когда графики поедут вниз.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <p class="eyebrow">Название</p>
+    <h2>Варианты для обсуждения</h2>
+    <div class="names">
+      <div class="name-row is-pick">
+        <div class="name-title">В ДЕЛЕ</div>
+        <p class="small muted">Разговорное, тёплое, легко произносится. «Я теперь в деле» — то, что участница скажет о себе сама. Хорошо ложится на механику: каждый месяц новое дело.</p>
+      </div>
+      <div class="name-row">
+        <div class="name-title">Дома в плюсе</div>
+        <p class="small muted">Прямо про результат: работа из дома и деньги сверху. Понятно с первой секунды, но как бренд менее выразительно.</p>
+      </div>
+      <div class="name-row">
+        <div class="name-title">Смена</div>
+        <p class="small muted">Двойной смысл: смена профессии и рабочая смена. Идеально описывает механику месяцев, но звучит суховато для тёплой подачи Виктории.</p>
+      </div>
+      <div class="name-row">
+        <div class="name-title">Удалёнка с Викой</div>
+        <p class="small muted">Максимально понятно и сразу объясняет суть. Минус — родовое слово, которое нельзя присвоить, и жёсткая привязка к одному человеку.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="print-only closing">
+    <p class="eyebrow">Дальше</p>
+    <h2>Три решения, и можно запускать</h2>
+    <div class="split">
+      <div>
+        <h3>Что решает Виктория</h3>
+        <ul class="list">
+          <li>Название клуба из предложенных вариантов</li>
+          <li>Готовность вести два эфира в месяц</li>
+          <li>Дата первого набора</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Что делает команда</h3>
+        <ul class="list">
+          <li>Юридическое оформление, оферта, приём оплаты</li>
+          <li>Telegram-канал, прогрев, бот с доступами</li>
+          <li>Эксперты, запись уроков, кураторы и чаты</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <p class="callout-title">Первый шаг — статистика блога</p>
+      <p>Выгрузка по Instagram и TikTok за 30 дней: пол, возраст, города, охваты. Всё, что в этом документе сказано об аудитории, до этой выгрузки остаётся обоснованным предположением, а прогноз продаж — оценкой.</p>
+    </div>
+  </section>
+
+  <footer>
+    Клуб «В ДЕЛЕ» · концепция, программа и финансовая модель · август 2026 · расчёты являются оценкой и требуют проверки на первом наборе
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
