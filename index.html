@@ -431,6 +431,47 @@
     .name-row { grid-template-columns: 1fr; }
   }
 
+  /* ---------- графика ---------- */
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 1.4rem 1.2rem 1.1rem;
+  }
+  figure svg { width: 100%; height: auto; display: block; overflow: visible; }
+  figcaption { font-size: .88rem; line-height: 1.5; color: var(--muted); max-width: 52ch; }
+
+  .fig-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; fill: var(--muted); }
+  .fig-value { font-family: var(--font-display); font-size: 12px; font-weight: 700; fill: var(--ink); }
+  .fig-value-sm { font-family: var(--font-display); font-size: 10px; font-weight: 650; fill: var(--muted); }
+  .fig-name { font-family: var(--font-display); font-size: 11px; font-weight: 600; fill: var(--ink); }
+  .fig-accent { fill: var(--accent); }
+  .fig-sage { fill: var(--sage); }
+  .fig-axis { stroke: var(--hairline); stroke-width: 1; }
+  .fig-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .fig-dot { fill: var(--accent); }
+  .fig-box { fill: var(--surface-alt); stroke: var(--hairline); stroke-width: 1; }
+  .fig-arrow { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+
+  /* столбики вырастают, линии прочерчиваются, сегменты разъезжаются */
+  .bar { transform-box: fill-box; transform-origin: 50% 100%; }
+  .js .reveal .bar { transform: scaleY(0); transition: transform .85s cubic-bezier(.2,.7,.3,1); transition-delay: var(--d, 0ms); }
+  .js .reveal.is-in .bar { transform: scaleY(1); }
+
+  .seg { transform-box: fill-box; transform-origin: 0 50%; }
+  .js .reveal .seg { transform: scaleX(0); transition: transform .8s cubic-bezier(.2,.7,.3,1); transition-delay: var(--d, 0ms); }
+  .js .reveal.is-in .seg { transform: scaleX(1); }
+
+  .js .reveal .draw { stroke-dasharray: var(--len, 600); stroke-dashoffset: var(--len, 600); transition: stroke-dashoffset 1.1s ease; transition-delay: var(--d, 0ms); }
+  .js .reveal.is-in .draw { stroke-dashoffset: 0; }
+
+  .js .reveal .pop { opacity: 0; transition: opacity .5s ease; transition-delay: var(--d, 0ms); }
+  .js .reveal.is-in .pop { opacity: 1; }
+
   /* ---------- движение ---------- */
 
   /* полоса прогресса чтения */
@@ -553,6 +594,15 @@
     }
     .wordmark, .cover-descriptor, .cover-meta, .cover > .eyebrow { animation: none !important; opacity: 1 !important; }
     .cover::before, .progress { display: none !important; }
+    /* графика в печати рисуется сразу, без анимации роста */
+    .bar, .seg, .draw, .pop {
+      transform: none !important;
+      opacity: 1 !important;
+      stroke-dashoffset: 0 !important;
+      stroke-dasharray: none !important;
+      transition: none !important;
+    }
+    figure { break-inside: avoid; }
     .print-only { display: flex; }
 
     section { break-before: page; padding: 0 0 1rem; border-top: 0; gap: 1.15rem; }
@@ -860,6 +910,55 @@
         <p class="small">Не «прошла курс», а конкретные работы в портфолио и первые отклики заказчикам.</p>
       </div>
     </div>
+    <figure>
+      <svg viewBox="0 0 660 205" role="img" aria-label="Цикл месяца: уроки, задание, разбор в чате, эфир с Викторией, работа в портфолио — и через месяц цикл повторяется на новом направлении">
+        <g class="pop" style="--d:0ms">
+          <rect class="fig-box" x="28" y="40" width="105" height="54" rx="3" />
+          <text class="fig-name" x="80" y="66" text-anchor="middle">Уроки</text>
+          <text class="fig-label" x="80" y="82" text-anchor="middle">4–6 занятий</text>
+        </g>
+        <path class="fig-arrow pop" d="M137 67 L149 67" marker-end="url(#tip2)" style="--d:120ms" />
+
+        <g class="pop" style="--d:150ms">
+          <rect class="fig-box" x="153" y="40" width="105" height="54" rx="3" />
+          <text class="fig-name" x="205" y="66" text-anchor="middle">Задание</text>
+          <text class="fig-label" x="205" y="82" text-anchor="middle">своими руками</text>
+        </g>
+        <path class="fig-arrow pop" d="M262 67 L274 67" marker-end="url(#tip2)" style="--d:270ms" />
+
+        <g class="pop" style="--d:300ms">
+          <rect class="fig-box" x="278" y="40" width="105" height="54" rx="3" />
+          <text class="fig-name" x="330" y="66" text-anchor="middle">Разбор</text>
+          <text class="fig-label" x="330" y="82" text-anchor="middle">куратор в чате</text>
+        </g>
+        <path class="fig-arrow pop" d="M387 67 L399 67" marker-end="url(#tip2)" style="--d:420ms" />
+
+        <g class="pop" style="--d:450ms">
+          <rect x="403" y="40" width="105" height="54" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" />
+          <text class="fig-name" x="455" y="66" text-anchor="middle" fill="var(--accent)">Эфир</text>
+          <text class="fig-label" x="455" y="82" text-anchor="middle">с Викторией</text>
+        </g>
+        <path class="fig-arrow pop" d="M512 67 L524 67" marker-end="url(#tip2)" style="--d:570ms" />
+
+        <g class="pop" style="--d:600ms">
+          <rect x="528" y="40" width="105" height="54" rx="3" fill="var(--sage-soft)" stroke="var(--sage)" />
+          <text class="fig-name" x="580" y="62" text-anchor="middle" fill="var(--sage)">Работа</text>
+          <text class="fig-label" x="580" y="78" text-anchor="middle">в портфолио</text>
+        </g>
+
+        <path class="fig-arrow draw" style="--len:620; --d:750ms"
+          d="M580 100 L580 140 Q580 152 568 152 L92 152 Q80 152 80 140 L80 106"
+          marker-end="url(#tip2)" />
+        <text class="fig-label" x="330" y="172" text-anchor="middle">через месяц — новое направление, те же шаги</text>
+
+        <defs>
+          <marker id="tip2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--muted)" />
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>Месяц устроен одинаково, меняется только тема. Человек привыкает к ритму с первого месяца и дальше уже знает, чего ждать, — это и удерживает подписку.</figcaption>
+    </figure>
   </section>
 
   <section class="reveal">
@@ -1018,6 +1117,37 @@
         <p class="small">Финальный месяц года: самозанятость, договоры, поднятие цен, первый помощник. Превращение заработка в устойчивый доход.</p>
       </div>
     </div>
+    <figure>
+      <svg viewBox="0 0 660 250" role="img" aria-label="Восходящая линия по четырём месяцам: картинки за 3 тысячи, дизайн до 30 тысяч, видео-пакет до 30 тысяч в месяц, и на четвёртом месяце переход к абонентской плате 15–35 тысяч ежемесячно">
+        <line class="fig-axis" x1="40" y1="205" x2="640" y2="205" />
+        <line class="fig-axis" x1="40" y1="70" x2="640" y2="70" stroke-dasharray="4 4" />
+        <text class="fig-label" x="640" y="62" text-anchor="end">регулярный доход</text>
+
+        <polyline class="fig-line draw" style="--len:560; --d:150ms"
+          points="90,185 273,150 456,120 600,55" />
+
+        <circle class="fig-dot pop" cx="90" cy="185" r="5" style="--d:400ms" />
+        <text class="fig-name pop" x="90" y="168" text-anchor="middle" style="--d:400ms">Картинки</text>
+        <text class="fig-label pop" x="90" y="222" text-anchor="middle" style="--d:400ms">Месяц 1</text>
+        <text class="fig-value-sm pop" x="90" y="238" text-anchor="middle" style="--d:400ms">до 3 тыс. ₽</text>
+
+        <circle class="fig-dot pop" cx="273" cy="150" r="5" style="--d:550ms" />
+        <text class="fig-name pop" x="273" y="133" text-anchor="middle" style="--d:550ms">Дизайн</text>
+        <text class="fig-label pop" x="273" y="222" text-anchor="middle" style="--d:550ms">Месяц 2</text>
+        <text class="fig-value-sm pop" x="273" y="238" text-anchor="middle" style="--d:550ms">до 30 тыс. ₽</text>
+
+        <circle class="fig-dot pop" cx="456" cy="120" r="5" style="--d:700ms" />
+        <text class="fig-name pop" x="456" y="103" text-anchor="middle" style="--d:700ms">Видео</text>
+        <text class="fig-label pop" x="456" y="222" text-anchor="middle" style="--d:700ms">Месяц 3</text>
+        <text class="fig-value-sm pop" x="456" y="238" text-anchor="middle" style="--d:700ms">15–30 тыс. ₽ за пакет</text>
+
+        <circle class="pop" cx="600" cy="55" r="7" fill="var(--sage)" style="--d:850ms" />
+        <text class="fig-name pop" x="600" y="36" text-anchor="middle" fill="var(--sage)" style="--d:850ms">Соцсети под ключ</text>
+        <text class="fig-label pop" x="600" y="222" text-anchor="middle" style="--d:850ms">Месяц 4</text>
+        <text class="fig-value-sm pop" x="600" y="238" text-anchor="middle" fill="var(--sage)" style="--d:850ms">15–35 тыс. ₽ в месяц</text>
+      </svg>
+      <figcaption>Заказчик всё время один и тот же — местный бизнес. Меняется только то, что ему продают, и с каждым месяцем это дороже. Четвёртый месяц пересекает пунктир: разовые заказы сменяются ежемесячной оплатой.</figcaption>
+    </figure>
     <div class="callout">
       <p class="callout-title">Логика программы</p>
       <p>Месяцы 1–3 идут от простого к дорогому на одних и тех же заказчиках: сначала картинка, потом дизайн, потом видео. Человек не бросает найденных клиентов, а поднимает им чек. Четвёртый месяц по плану должен переводить на абонентскую плату — это разница между «иногда подрабатываю» и «у меня есть доход».</p>
@@ -1092,6 +1222,35 @@
         <span class="figure-label">участников на старте</span>
       </div>
     </div>
+    <figure>
+      <svg viewBox="0 0 660 215" role="img" aria-label="Две полосы: по числу покупателей месячный тариф занимает 55 процентов, по деньгам — только 30. Полугодовой тариф берут 15 процентов покупателей, но он приносит 31 процент кассы">
+        <text class="fig-name" x="60" y="30">Кто покупает</text>
+        <rect class="seg" x="60" y="42" width="308" height="34" rx="2" fill="var(--accent-deep)" style="--d:0ms" />
+        <rect class="seg" x="368" y="42" width="168" height="34" rx="2" fill="var(--accent)" style="--d:120ms" />
+        <rect class="seg" x="536" y="42" width="84" height="34" rx="2" fill="var(--sage)" style="--d:240ms" />
+        <text class="fig-value" x="214" y="64" text-anchor="middle" fill="#F6EEF1">55%</text>
+        <text class="fig-value" x="452" y="64" text-anchor="middle" fill="#120E11">30%</text>
+        <text class="fig-value" x="578" y="64" text-anchor="middle" fill="#120E11">15%</text>
+
+        <text class="fig-name" x="60" y="117">Откуда деньги</text>
+        <rect class="seg" x="60" y="129" width="171" height="34" rx="2" fill="var(--accent-deep)" style="--d:360ms" />
+        <rect class="seg" x="231" y="129" width="218" height="34" rx="2" fill="var(--accent)" style="--d:480ms" />
+        <rect class="seg" x="449" y="129" width="171" height="34" rx="2" fill="var(--sage)" style="--d:600ms" />
+        <text class="fig-value" x="145" y="151" text-anchor="middle" fill="#F6EEF1">30%</text>
+        <text class="fig-value" x="340" y="151" text-anchor="middle" fill="#120E11">39%</text>
+        <text class="fig-value" x="534" y="151" text-anchor="middle" fill="#120E11">31%</text>
+
+        <g class="pop" style="--d:800ms">
+          <rect x="60" y="185" width="10" height="10" rx="2" fill="var(--accent-deep)" />
+          <text class="fig-label" x="76" y="194">1 месяц · 1 490 ₽</text>
+          <rect x="215" y="185" width="10" height="10" rx="2" fill="var(--accent)" />
+          <text class="fig-label" x="231" y="194">3 месяца · 3 490 ₽</text>
+          <rect x="380" y="185" width="10" height="10" rx="2" fill="var(--sage)" />
+          <text class="fig-label" x="396" y="194">6 месяцев · 5 490 ₽</text>
+        </g>
+      </svg>
+      <figcaption>Длинные тарифы весят в кассе больше, чем в головах. Полугодовой берут всего 15 человек из ста, а приносит он почти треть денег — поэтому за его долей в первом наборе и надо следить.</figcaption>
+    </figure>
   </section>
 
   <section class="reveal">
@@ -1120,6 +1279,47 @@
         </tbody>
       </table>
     </div>
+    <figure>
+      <svg viewBox="0 0 660 275" role="img" aria-label="Столбчатая диаграмма поступлений по месяцам: 13,45 млн в первый месяц, затем падение до 0,21 млн к шестому, со всплеском 3,04 млн в четвёртом за счёт продления трёхмесячных подписок">
+        <line class="fig-axis" x1="40" y1="220" x2="640" y2="220" />
+
+        <rect class="bar fig-accent" x="71" y="30" width="54" height="190" style="--d:0ms" />
+        <text class="fig-value" x="98" y="22" text-anchor="middle">13,45</text>
+        <text class="fig-label" x="98" y="238" text-anchor="middle">Месяц 1</text>
+        <text class="fig-value-sm" x="98" y="256" text-anchor="middle">5 000 чел.</text>
+
+        <rect class="bar" x="168" y="188" width="54" height="32" fill="var(--accent-deep)" style="--d:90ms" />
+        <text class="fig-value" x="195" y="180" text-anchor="middle">2,25</text>
+        <text class="fig-label" x="195" y="238" text-anchor="middle">Месяц 2</text>
+        <text class="fig-value-sm" x="195" y="256" text-anchor="middle">3 763</text>
+
+        <rect class="bar" x="265" y="202" width="54" height="18" fill="var(--accent-deep)" style="--d:180ms" />
+        <text class="fig-value" x="292" y="194" text-anchor="middle">1,24</text>
+        <text class="fig-label" x="292" y="238" text-anchor="middle">Месяц 3</text>
+        <text class="fig-value-sm" x="292" y="256" text-anchor="middle">3 082</text>
+
+        <rect class="bar fig-accent" x="361" y="177" width="54" height="43" style="--d:270ms" />
+        <text class="fig-value" x="388" y="169" text-anchor="middle">3,04</text>
+        <text class="fig-label" x="388" y="238" text-anchor="middle">Месяц 4</text>
+        <text class="fig-value-sm" x="388" y="256" text-anchor="middle">1 883</text>
+
+        <rect class="bar" x="458" y="215" width="54" height="5" fill="var(--accent-deep)" style="--d:360ms" />
+        <text class="fig-value" x="485" y="207" text-anchor="middle">0,38</text>
+        <text class="fig-label" x="485" y="238" text-anchor="middle">Месяц 5</text>
+        <text class="fig-value-sm" x="485" y="256" text-anchor="middle">1 677</text>
+
+        <rect class="bar" x="555" y="217" width="54" height="3" fill="var(--accent-deep)" style="--d:450ms" />
+        <text class="fig-value" x="582" y="209" text-anchor="middle">0,21</text>
+        <text class="fig-label" x="582" y="238" text-anchor="middle">Месяц 6</text>
+        <text class="fig-value-sm" x="582" y="256" text-anchor="middle">1 564</text>
+
+        <g class="pop" style="--d:900ms">
+          <line class="fig-arrow" x1="388" y1="120" x2="388" y2="163" stroke-dasharray="3 3" />
+          <text class="fig-label" x="388" y="112" text-anchor="middle">продления 3-месячных</text>
+        </g>
+      </svg>
+      <figcaption>Поступления по месяцам, млн ₽. Первый набор даёт две трети всей полугодовой кассы; четвёртый месяц оживает только за счёт продления трёхмесячных подписок. Пятый и шестой — провал, который лечится вторым набором.</figcaption>
+    </figure>
     <p class="small muted">Провал в пятом и шестом месяце — не ошибка модели, а свойство запуска одной волной. Лечится вторым набором на третьем месяце: он накладывается на первую когорту и выравнивает поток.</p>
   </section>
 
@@ -1225,6 +1425,33 @@
   <section class="reveal">
     <p class="eyebrow">Запуск</p>
     <h2>Шесть недель до старта</h2>
+    <figure>
+      <svg viewBox="0 0 660 250" role="img" aria-label="Воронка запуска: 1,7 миллиона подписчиков в Instagram и TikTok, затем Telegram-канал, в котором сейчас ноль подписчиков, и только потом 5 тысяч покупок. Telegram — узкое место">
+        <rect class="pop" x="50" y="30" width="560" height="48" rx="3" fill="var(--surface-alt)" stroke="var(--hairline)" style="--d:0ms" />
+        <text class="fig-name pop" x="330" y="52" text-anchor="middle" style="--d:0ms">Instagram 872 тыс. · TikTok 800 тыс.</text>
+        <text class="fig-label pop" x="330" y="68" text-anchor="middle" style="--d:0ms">аудитория есть уже сегодня</text>
+
+        <path class="fig-arrow pop" d="M330 78 L330 100" marker-end="url(#tip)" style="--d:200ms" />
+
+        <rect class="pop" x="180" y="103" width="300" height="48" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" style="--d:300ms" />
+        <text class="fig-name pop" x="330" y="125" text-anchor="middle" fill="var(--accent)" style="--d:300ms">Telegram-канал</text>
+        <text class="fig-label pop" x="330" y="141" text-anchor="middle" style="--d:300ms">сейчас 0 подписчиков</text>
+        <text class="fig-label pop" x="496" y="131" style="--d:600ms">← узкое место</text>
+
+        <path class="fig-arrow pop" d="M330 151 L330 173" marker-end="url(#tip)" style="--d:500ms" />
+
+        <rect class="pop" x="255" y="176" width="150" height="48" rx="3" fill="var(--sage-soft)" stroke="var(--sage)" style="--d:600ms" />
+        <text class="fig-name pop" x="330" y="198" text-anchor="middle" fill="var(--sage)" style="--d:600ms">5 000 покупок</text>
+        <text class="fig-label pop" x="330" y="214" text-anchor="middle" style="--d:600ms">13,45 млн ₽</text>
+
+        <defs>
+          <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--muted)" />
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>Между готовой аудиторией и деньгами стоит пустой Telegram. Пока в него не перегнали людей, ни бот, ни оплата, ни программа не имеют значения — поэтому канал заводится в первые же недели, а не перед самым набором.</figcaption>
+    </figure>
     <div class="steps">
       <div class="step">
         <div class="step-when">Недели 1–2</div>
